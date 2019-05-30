@@ -1,0 +1,100 @@
+/*
+    Author: Harsh Dagar
+    Loading Templates
+
+NOTE: CLASS NAMES MUST BE SAME AS IN DRIVER CODE, ELEMENTS MAY VERY
+*/
+
+/* ======================================= Loading Template 1 ======================================
+    Driver Code:
+        <div class="loading1">
+            <div class="flash">
+                <div></div>
+            </div>
+        </div>
+*/
+div.loading1 {
+  --width_of_max_flow: 200px; /*Width of loading animation*/
+  --width_of_flow: 150px; /*Width of moving element*/
+  --negative_flow_width: -150px; /* MUST BE SAME INTEGER AS MOVING ELEMENT BUT NEGATIVE*/
+}
+
+div.flash {
+  height: 5px;
+  width: var(--width_of_max_flow);
+  background-color: white;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.flash > *:first-child {
+  height: 5px;
+  background: grey;
+  border-radius: 10px;
+  width: var(--width_of_flow);
+  animation: mover_Animate 0.5s infinite linear;
+}
+
+@keyframes mover_Animate {
+  0% {
+    margin-left: var(--negative_flow_width);
+  }
+
+  50% {
+    margin-left: 0px;
+  }
+
+  100% {
+    margin-left: var(--width_of_max_flow);
+    pxopacity: 0;
+  }
+}
+/* ======================================= Loading Template 1 ======================================
+    Driver Code:
+        <div class="loading2">
+            <div class="windmill">
+                <div></div>
+            </div>
+        </div>
+*/
+div.loading2 {
+  margin: 100px;
+  --width_of_max_flow: 200px; /*Width of loading animation*/
+}
+div.windmill {
+  height: 5px;
+  width: var(--width_of_max_flow);
+  overflow: hidden;
+  border-radius: 5px;
+  transform: rotate(90deg);
+  animation: rotate_windmill 0.01s infinite linear;
+}
+.windmill > *:nth-child(1) {
+  height: 5px;
+  background: grey;
+  border-radius: 10px;
+  width: 10px;
+  animation: tick_tock 1.5s infinite linear;
+}
+@keyframes rotate_windmill {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes tick_tock {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 95%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
